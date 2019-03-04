@@ -1,6 +1,6 @@
 <template>
-    <div>
-       page111111  table
+    <div class="content">
+        Enterpage 123456
     </div>
 </template>
 
@@ -13,4 +13,3 @@ export default {
 <style>
 
 </style>
-

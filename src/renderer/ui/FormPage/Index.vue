@@ -1,6 +1,6 @@
 <template>
-    <div>
-        page222222  layout
+    <div class="content">
+        page222222  form
     </div>
 </template>
 

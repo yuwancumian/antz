@@ -51,14 +51,18 @@
     }
   },
   "dependencies": {
+    "ace-builds": "^1.4.3",
     "axios": "^0.18.0",
+    "codemirror": "^5.44.0",
+    "element-ui": "^2.5.4",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-electron": "^1.0.0"
+    "vuex-electron": "^1.0.0",
+    "xlsx": "^0.14.1"
   },
   "devDependencies": {
     "ajv": "^6.5.0",

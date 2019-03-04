@@ -8,23 +8,27 @@ export default new Router({
  
     {
       path: '/',
-      component: require('@/components/GenPage').default
+      component: require('@/ui/TablePage').default
     },
     {
       path: '/layout-page',
-      component: require('@/components/LayoutPage').default
+      component: require('@/ui/LayoutPage').default
     },
     {
-      path: '/thead-page',
-      component: require('@/components/THeadPage').default
+      path: '/section-page',
+      component: require('@/ui/SectionPage').default
     },
     {
       path: '/table-page',
-      component: require('@/components/TablePage').default
+      component: require('@/ui/TablePage').default,
+    },
+    {
+      path: '/table-page:name',
+      component: require('@/ui/TablePage').default,
     },
     {
       path: '/form-page',
-      component: require('@/components/FormPage').default
+      component: require('@/ui/FormPage').default
     },
     {
       path: '*',

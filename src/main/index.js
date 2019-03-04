@@ -20,10 +20,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 663,
     useContentSize: true,
-    width: 1000
+    width: 1024,
   })
 
   mainWindow.loadURL(winURL)
+  mainWindow.maximize();
 
   mainWindow.on('closed', () => {
     mainWindow = null

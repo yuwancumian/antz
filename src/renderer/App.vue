@@ -1,18 +1,72 @@
 <template>
   <div id="app">
-    <main-bar></main-bar>
-    <router-view></router-view>
+    <div class="head">
+      <h3>Antz</h3>
+    </div>
+    <main-menu></main-menu>
+    <div class="page">
+      <router-view></router-view>
+    </div>
+    
   </div>
 </template>
 
 <script>
-  import MainBar from '@/components/MainBar/Index'
+  import MainMenu from '@/ui/MainMenu/Index'
   export default {
     name: 'y111',
-    components: { MainBar }
+    components: { MainMenu }
   }
 </script>
 
-<style>
+<style lang="less">
   /* CSS */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .page{
+    width: 100% ;
+  }
+  .head {
+    width: 100vw;
+    background: #1CB2A4;
+    height: 40px;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.13);
+    line-height: 40px;
+    color: #fff;
+    position: fixed;
+    z-index: 1000;
+  }
+  .content {
+      height: 94vh;
+      padding-top: 50px;
+      margin-left: 110px;
+      overflow: scroll;
+  }
+  .main-menu {
+      position: fixed;
+      background: #022B35;
+      border-right: 5px solid #09212A;
+      padding-left: 12px;
+      width: 100px;
+      left: 0;
+      top: 40px;
+      bottom: 0;
+      ul {
+          margin-top: 40px;
+          list-style: none;
+          padding-left: 0;
+          line-height: 30px;
+      }
+      a {
+        color:#ccc;
+        text-decoration: none;
+      }
+      a:hover{
+        color: #fff;
+      }
+    }
 </style>

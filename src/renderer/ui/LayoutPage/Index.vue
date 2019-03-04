@@ -1,6 +1,6 @@
 <template>
-    <div>
-        page111111 gen
+    <div class="content">
+        page222222  layout
     </div>
 </template>
 
