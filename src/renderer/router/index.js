@@ -27,8 +27,8 @@ export default new Router({
       component: require('@/ui/TablePage').default,
     },
     {
-      path: '/form-page',
-      component: require('@/ui/FormPage').default
+      path: '/filter-page',
+      component: require('@/ui/FilterPage').default
     },
     {
       path: '*',

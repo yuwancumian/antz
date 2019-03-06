@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import MainMenu from '@/ui/MainMenu/Index'
+  import MainMenu from '@/components/MainMenu/Index'
   export default {
     name: 'y111',
     components: { MainMenu }
@@ -26,9 +26,12 @@
     margin: 0;
     box-sizing: border-box;
   }
-
+  #app{
+    height: 100vh;
+  }
   .page{
     width: 100% ;
+    height: 100vh;
   }
   .head {
     width: 100vw;
@@ -39,12 +42,17 @@
     color: #fff;
     position: fixed;
     z-index: 1000;
-  }
+    h3{
+      padding-left: 12px;
+    }
+  } 
   .content {
-      height: 94vh;
-      padding-top: 50px;
-      margin-left: 110px;
-      overflow: scroll;
+      width: calc(100% - 100px);
+      height: 100vh;
+      position: absolute;
+      padding-top: 40px;
+      margin-left: 100px;
+      overflow: hidden;
   }
   .main-menu {
       position: fixed;

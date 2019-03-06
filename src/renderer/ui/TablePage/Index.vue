@@ -5,7 +5,6 @@
         </div>
         <div class="toolbar">
             <el-card>
-
                 <ul>
                     <li>
                         <a href="#" @click="openExcel"><img src="~@/assets/open.png" alt="" id="openBtn" ></a>
@@ -106,7 +105,7 @@ export default {
 
 <style lang="less">
   .toolbar{
-      width: 260px;
+      width: 300px;
       height: 200px;
       position: absolute;
       right: 16px;
