@@ -1,74 +1,102 @@
 <template>
     <div class="content">
         <sub-menu title="Filter" :menuData="filterMenu"></sub-menu>
-         <div id="editor">
-             123
+        <div id="editor">
+            some code here
         </div>
         <div class="toolbar" id="filterToolbar">
             <el-card>
                 <h4>filter builder</h4>
-                <ul>
-                    <draggable v-model="filterMenu" v-bind="dragOptions" @start="isDragging = true"
-        @end="isDragging = false">
-                        <transition-group type="transition" :name="'flip-list'">
-                            <li class="toolbar-item" v-for="item in filterMenu" :key="item.id">
-                                {{item.title}}
-                                <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                                <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                            </li>
-                        <!-- <li class="toolbar-item">
-                            名称 <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                            <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                        </li>
-                        <li class="toolbar-item">456</li>
-                        <li class="toolbar-item">123</li>
-                        <li class="toolbar-item">456</li> -->
-                        </transition-group>
-                    </draggable>
-                </ul>
+                <el-form ref="form1" :model="form" label-width="60px">
+                    <el-form-item label="name">
+                        <el-input type="text" v-model="form.name" class="toolbar-input" size="small"> </el-input>
+                    </el-form-item>
+                    <el-form-item label="field">
+                        <el-input type="text" v-model="form.field" class="toolbar-input" size="small"> </el-input>
+                    </el-form-item>
+                </el-form>
                 <div class="toolbar-footer">
-                    <el-select size="small"></el-select>
-                    <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                    <el-input type="text" class="toolbar-input" size="small"> </el-input>
-                    <el-button size="small"> 增加 </el-button>
+                    <el-button size="small" @click="handleGenarate"> Generate </el-button>
+                    <el-button size="small" @click="hanldeCopy"> Copy </el-button>
                 </div>
             </el-card>
         </div>
-        page222222a1111  form
     </div>
 </template>
 
 <script>
-import {Card, Input, Button, Select} from 'element-ui';
-import draggable from 'vuedraggable';
+import {clipboard} from 'electron';
+import {Card, Input, Button, Select, Form} from 'element-ui';
+import ace from 'ace-builds';
+require("ace-builds/webpack-resolver");
 import SubMenu from '@/components/SubMenu/SubMenu';
+import {toInput} from '@helper/renderFilter';
 export default {
-    components: { SubMenu,  draggable},
+    components: { SubMenu },
     data(){
         return {
             filterMenu: [
                 {
                     id: 1,
-                    title: "filter1"
+                    title: "Input"
                 }, 
                 {
                     id: 2,
-                    title: "fitler2"
+                    title: "Radio"
+                },
+                {
+                    id: 3,
+                    title: "Select"
+                },
+                {
+                    id: 4,
+                    title: "Range"
                 }
             ],
-            filterData: []
+            form: {
+                name: '',
+                filed: ''
+            }
         }
     },
-    computed: {
-        dragOptions() {
-            return {
-                animation: 0,
-                group: "description",
-                disabled: false,
-                ghostClass: "ghost"
-            };
+    mounted (){
+        
+        // // ace.config.set("basePath", "ace-builds/src-noconflict");
+        // editor.session.setTabSize(2);
+        const a = document.getElementById('editor');
+        console.log("a",a);
+        console.log("hahahhahaahhah!")
+       
+        var editor = ace.edit("editor", {
+            mode: "ace/mode/jsx",
+            selectionStyle: "line",
+            autoScrollEditorIntoView: true
+        });
+    },
+    methods: {
+        handleGenarate () {
+            console.log('name',this.form.name)
+            console.log('field', this.form.field)
+            const str = toInput(this.form.name,this.form.field)
+            var editor = ace.edit("editor", {
+                mode: "ace/mode/jsx",
+                selectionStyle: "line",
+                autoScrollEditorIntoView: true
+            });
+            // ace.config.set("basePath", "ace-builds/src-noconflict");
+            editor.session.setTabSize(2);
+            editor.setValue(str);
+            console.log("finished")
+        },
+        hanldeCopy(){
+            var editor = ace.edit("editor")
+            console.log('editor', editor);
+            var result = editor.session.getValue()
+            clipboard.writeText(result)
+            console.log('result',result)
         }
-    }
+    },
+    
 }
 </script>
 
@@ -78,26 +106,16 @@ export default {
         }
     }
     .toolbar-item{
-        border: 2px dashed #ccc;
         padding: 4px 0;
         margin: 6px 0;
         border-radius: 4px;
     }
     .toolbar-input{
         height: 18px !important;
-        width: 95px !important;
+        width: 195px !important;
     }
     .toolbar-footer {
         border-top: 1px solid #ccc;
     }
-    .ghost {
-        opacity: 0.5;
-        background: #c8ebfb;
-    }
-    .flip-list-move {
-    transition: transform 0.5s;
-    }
-    .no-move {
-    transition: transform 0s;
-    }
+    
 </style>

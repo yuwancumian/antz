@@ -135,6 +135,7 @@ let rendererConfig = {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
       '@config': path.join(__dirname, '../src/config'),
+      '@helper': path.join(__dirname, '../src/helper'),
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']

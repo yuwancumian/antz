@@ -1,7 +1,8 @@
 <template>
     <div class="content">
+         <sub-menu title="Table" :menuData="tableMenu"></sub-menu>
         <div id="editor">
-
+code here
         </div>
         <div class="toolbar">
             <el-card>
@@ -37,6 +38,7 @@
 
 <script>
 import {Card, Input, Button, Icon, Switch, Tabs} from 'element-ui';
+import SubMenu from '@/components/SubMenu/SubMenu';
 import {remote} from 'electron'
 import XLSX from 'xlsx';
 const {dialog} = remote;
@@ -45,9 +47,16 @@ import fs from 'fs';
 import path from 'path';
 require("ace-builds/webpack-resolver");
 export default {
+    components: { SubMenu },
     data () {
         return {
             codesnip: '123',
+            tableMenu: [
+                {
+                    id: 1,
+                    title: 'table'
+                }
+            ]
         }
         
     },
@@ -104,21 +113,7 @@ export default {
 </script>
 
 <style lang="less">
-  .toolbar{
-      width: 300px;
-      height: 200px;
-      position: absolute;
-      right: 16px;
-      top: 60px;
-      ul {
-          line-height: 32px;
-          list-style: none;
-      }
-  }
-  #editor{
-      width: 100%;
-      min-height: 720px;
-  }
+  
   #openBtn{
       position: absolute;
       top: 30px;
