@@ -1,26 +1,9 @@
 <template>
     <div class="content">
         <sub-menu title="Filter" :menuData="filterMenu"></sub-menu>
-        <div id="editor">
-            some code here
-        </div>
-        <div class="toolbar" id="filterToolbar">
-            <el-card>
-                <h4>filter builder</h4>
-                <el-form ref="form1" :model="form" label-width="60px">
-                    <el-form-item label="name">
-                        <el-input type="text" v-model="form.name" class="toolbar-input" size="small"> </el-input>
-                    </el-form-item>
-                    <el-form-item label="field">
-                        <el-input type="text" v-model="form.field" class="toolbar-input" size="small"> </el-input>
-                    </el-form-item>
-                </el-form>
-                <div class="toolbar-footer">
-                    <el-button size="small" @click="handleGenarate"> Generate </el-button>
-                    <el-button size="small" @click="hanldeCopy"> Copy </el-button>
-                </div>
-            </el-card>
-        </div>
+        <router-view></router-view>
+       
+        
     </div>
 </template>
 
@@ -38,19 +21,25 @@ export default {
             filterMenu: [
                 {
                     id: 1,
-                    title: "Input"
+                    title: "Input",
+                    url: '/filter-page/input',
+                    icon: "input-button"
                 }, 
                 {
                     id: 2,
-                    title: "Radio"
+                    title: "Radio",
+                    url: '/filter-page/radio',
+                    icon: "radio-button"
                 },
                 {
                     id: 3,
-                    title: "Select"
+                    title: "Select",
+                    url: '/filter-page/select',
                 },
                 {
                     id: 4,
-                    title: "Range"
+                    title: "DateRange",
+                    url: '/filter-page/dateRange',
                 }
             ],
             form: {
@@ -60,42 +49,18 @@ export default {
         }
     },
     mounted (){
-        
         // // ace.config.set("basePath", "ace-builds/src-noconflict");
         // editor.session.setTabSize(2);
         const a = document.getElementById('editor');
         console.log("a",a);
-        console.log("hahahhahaahhah!")
        
-        var editor = ace.edit("editor", {
-            mode: "ace/mode/jsx",
-            selectionStyle: "line",
-            autoScrollEditorIntoView: true
-        });
+        // var editor = ace.edit("editor", {
+        //     mode: "ace/mode/jsx",
+        //     selectionStyle: "line",
+        //     autoScrollEditorIntoView: true
+        // });
     },
-    methods: {
-        handleGenarate () {
-            console.log('name',this.form.name)
-            console.log('field', this.form.field)
-            const str = toInput(this.form.name,this.form.field)
-            var editor = ace.edit("editor", {
-                mode: "ace/mode/jsx",
-                selectionStyle: "line",
-                autoScrollEditorIntoView: true
-            });
-            // ace.config.set("basePath", "ace-builds/src-noconflict");
-            editor.session.setTabSize(2);
-            editor.setValue(str);
-            console.log("finished")
-        },
-        hanldeCopy(){
-            var editor = ace.edit("editor")
-            console.log('editor', editor);
-            var result = editor.session.getValue()
-            clipboard.writeText(result)
-            console.log('result',result)
-        }
-    },
+    
     
 }
 </script>

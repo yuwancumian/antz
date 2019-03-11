@@ -5,7 +5,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
- 
     {
       path: '/',
       component: require('@/ui/TablePage').default
@@ -28,7 +27,22 @@ export default new Router({
     },
     {
       path: '/filter-page',
-      component: require('@/ui/FilterPage').default
+      component: require('@/ui/FilterPage').default,
+      children: [
+        {
+          path: 'input',
+          component: require('@/ui/Filterpage/InputRender').default
+        },{
+          path: 'radio',
+          component: require('@/ui/Filterpage/RadioRender').default
+        },{
+          path: 'select',
+          component: require('@/ui/Filterpage/SelectRender').default
+        },{
+          path: 'dateRange',
+          component: require('@/ui/FilterPage/DateRangeRender').default
+        }
+      ]
     },
     {
       path: '*',

@@ -54,7 +54,8 @@ export default {
             tableMenu: [
                 {
                     id: 1,
-                    title: 'table'
+                    title: 'table',
+                    url: '/table-page',
                 }
             ]
         }
@@ -71,14 +72,14 @@ export default {
         fs.readFile(filepath, 'utf-8', function(err, data){
             console.log('type',typeof(data));
            
-            var editor = ace.edit("editor", {
-                mode: "ace/mode/jsx",
-                selectionStyle: "line",
-                autoScrollEditorIntoView: true
-            });
-            // ace.config.set("basePath", "ace-builds/src-noconflict");
-            editor.session.setTabSize(2);
-            editor.setValue(data);
+            // var editor = ace.edit("editor", {
+            //     mode: "ace/mode/jsx",
+            //     selectionStyle: "line",
+            //     autoScrollEditorIntoView: true
+            // });
+            // // ace.config.set("basePath", "ace-builds/src-noconflict");
+            // editor.session.setTabSize(2);
+            // editor.setValue(data);
             
         })
         

@@ -3,9 +3,12 @@
         <h3>{{title}}</h3>
         <div>
             <ul>
-                <li v-for="item in menuData" :key="item.id">
-                    {{item.title}}
-                </li>
+                <router-link v-for="item in menuData" :key="item.id" :to="item.url">
+                    <li>
+                        {{item.title}}
+                    <!-- <img :src="getPicUrl(item.icon)" /> -->
+                    </li>
+                </router-link>
             </ul>
         </div>
         
@@ -14,6 +17,11 @@
 
 <script>
 export default {
-    props: ['title','menuData']
+    props: ['title','menuData'],
+    // methods: {
+    //     getPicUrl(pic){
+    //         return require('~@/assets/'+pic+'.png')
+    //     }
+    // }
 }
 </script>
