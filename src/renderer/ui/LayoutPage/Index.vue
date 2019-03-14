@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <sub-menu title="Layout" :menuData="layoutMenu"></sub-menu>
+        <sub-menu title="Layout" :menuData="menuData"></sub-menu>
         page222222  layout
     </div>
 </template>
@@ -15,6 +15,13 @@ export default {
                 {
                     id: 1,
                     title: 'layout1'
+                }
+            ],
+            menuData: [
+                {
+                    id: 1,
+                    title: 'table',
+                    url: '/table-page',
                 }
             ]
         }

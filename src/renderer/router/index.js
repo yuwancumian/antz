@@ -31,16 +31,16 @@ export default new Router({
       children: [
         {
           path: 'input',
-          component: require('@/ui/Filterpage/InputRender').default
+          component: require('@/ui/Filterpage/Input').default
         },{
           path: 'radio',
-          component: require('@/ui/Filterpage/RadioRender').default
+          component: require('@/ui/Filterpage/Radio').default
         },{
           path: 'select',
-          component: require('@/ui/Filterpage/SelectRender').default
+          component: require('@/ui/Filterpage/Select').default
         },{
           path: 'dateRange',
-          component: require('@/ui/FilterPage/DateRangeRender').default
+          component: require('@/ui/FilterPage/DateRange').default
         }
       ]
     },

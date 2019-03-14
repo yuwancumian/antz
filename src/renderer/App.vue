@@ -83,6 +83,11 @@
       position: absolute;
       right: 16px;
       top: 60px;
+      h4 {
+        border-bottom: 1px solid #f3f3f3;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
       ul {
           line-height: 32px;
           list-style: none;

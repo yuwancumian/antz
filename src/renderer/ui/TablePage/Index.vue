@@ -1,9 +1,7 @@
 <template>
     <div class="content">
-         <sub-menu title="Table" :menuData="tableMenu"></sub-menu>
-        <div id="editor">
-code here
-        </div>
+        <sub-menu title="Table" :menuData="tableMenu"></sub-menu>
+        <editor :content="genCode"></editor>
         <div class="toolbar">
             <el-card>
                 <ul>
@@ -27,7 +25,7 @@ code here
                         </el-switch> -->
                     </li>
                 </ul>
-                <el-button type="primary" size="small">复制</el-button>
+                <el-button type="primary" size="small" @click="handleCopy">复制</el-button>
                 <!-- <i class="el-icon-edit"></i> -->
 
                 
@@ -39,27 +37,28 @@ code here
 <script>
 import {Card, Input, Button, Icon, Switch, Tabs} from 'element-ui';
 import SubMenu from '@/components/SubMenu/SubMenu';
-import {remote} from 'electron'
+import {remote, clipboard} from 'electron';
 import XLSX from 'xlsx';
 const {dialog} = remote;
+import editor from '@/components/Editor/Index';
 import ace from 'ace-builds';
 import fs from 'fs';
 import path from 'path';
 require("ace-builds/webpack-resolver");
 export default {
-    components: { SubMenu },
+    components: { SubMenu, editor },
     data () {
         return {
-            codesnip: '123',
+            genCode: '123',
             tableMenu: [
                 {
                     id: 1,
                     title: 'table',
                     url: '/table-page',
                 }
-            ]
+            ],
+            valueArray: []
         }
-        
     },
 
     created(){
@@ -104,11 +103,19 @@ export default {
                 }
                 // Change how to handle the file content
                 console.log("The file content is : " + JSON.stringify(data));
+
                 for (var item in data[0]) {
                     console.log("item", item + ':' + data[0][item]);
+                    this.valueArray.push(`{\n\ttitle: '${item}', \n\tdataIndex: ${data[0][item]}, \n\twidth: 120 \n},`)
                 }
+                this.genCode=this.valueArray.join('');
             })
-        }  
+        },
+        handleCopy(){
+            console.log('copied')
+            console.log('genCode', this.genCode)
+            clipboard.writeText(this.genCode);
+        }
     }
 }
 </script>

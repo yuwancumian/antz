@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <sub-menu title="Section" :menuData="sectionData"></sub-menu>
+        <sub-menu title="Section" :menuData="menuData"></sub-menu>
         <div class="center-code">
             123
         </div>
@@ -16,6 +16,13 @@ export default {
     data (){
         return{
             sectionData: null,
+            menuData: [
+                {  
+                    id: 1,
+                    title: 'table',
+                    url: '/table-page',
+                }
+            ]
         }
     },
     created () {
