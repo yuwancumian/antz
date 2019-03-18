@@ -13,6 +13,7 @@
 
 <script>
   import MainMenu from '@/components/MainMenu/Index'
+  // require('~@/fonts/firacode/fira_code.css');
   export default {
     name: 'y111',
     components: { MainMenu }
@@ -20,11 +21,15 @@
 </script>
 
 <style lang="less">
+  @import './fonts/firacode/fira_code.css';
   /* CSS */
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+  }
+  body {
+    font-family:  sans-serif,Verdana, "Fira Code";
   }
   #app{
         height: 100vh;
