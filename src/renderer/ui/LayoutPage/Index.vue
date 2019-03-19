@@ -1,14 +1,19 @@
 <template>
     <div class="content">
-        <sub-menu title="Layout" :menuData="menuData"></sub-menu>
-        page222222  layout
+        <div class="layout-editor">
+            <with-editor></with-editor>
+        </div>
+        <div class="layout-browser">
+            <webview src="build/cache/index.html" frameborder="0"></webview>
+        </div>
     </div>
 </template>
 
 <script>
 import SubMenu from '@/components/SubMenu/SubMenu';
+import WithEditor from './withEditor/index';
 export default {
-    components: { SubMenu },
+    components: { SubMenu, WithEditor },
     data () {
         return {
             layoutMenu: [
@@ -30,5 +35,15 @@ export default {
 </script>
 
 <style>
+.layout-editor{
+    width: 50%;
+    float: left;
+    min-height: 100vh;
+    border-right: 1px solid #ccc;
+}
+.layout-browser {
+    width: 50%;
+    float: right;
+}
 
 </style>

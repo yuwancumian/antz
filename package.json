@@ -55,6 +55,7 @@
     "axios": "^0.18.0",
     "codemirror": "^5.44.0",
     "element-ui": "^2.5.4",
+    "hterm-umdjs": "^1.4.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "vue": "^2.5.16",
