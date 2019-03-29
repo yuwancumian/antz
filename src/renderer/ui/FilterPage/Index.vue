@@ -21,23 +21,29 @@ export default {
             filterMenu: [
                 {
                     id: 1,
+                    title: "table",
+                    url: '/filter-page/table',
+                    icon: "input-button"
+                },
+                {
+                    id: 2,
                     title: "Input",
                     url: '/filter-page/input',
                     icon: "input-button"
                 }, 
                 {
-                    id: 2,
+                    id: 3,
                     title: "Radio",
                     url: '/filter-page/radio',
                     icon: "radio-button"
                 },
                 {
-                    id: 3,
+                    id: 4,
                     title: "Select",
                     url: '/filter-page/select',
                 },
                 {
-                    id: 4,
+                    id: 5,
                     title: "DateRange",
                     url: '/filter-page/dateRange',
                 }

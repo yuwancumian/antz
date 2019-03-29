@@ -1,41 +1,38 @@
 <template>
-    <div class="content">
-        <sub-menu title="Table" :menuData="tableMenu"></sub-menu>
+    <div>
         <editor :content="genCode"></editor>
         <div class="toolbar">
             <el-card>
-                <ul>
+                <h4>filter builder</h4>
+                    <a href="#" @click="openExcel"><img src="~@/assets/open.png" alt="" id="openBtn" ></a>
+                    <el-form ref="form1" :model="form" label-width="60px">
+                        <el-form-item label="name">
+                            <el-input type="text" v-model="form.name"  size="small"> </el-input>
+                        </el-form-item>
+                        <el-form-item label="field">
+                            <el-input type="textarea" v-model="form.field"  size="small"> </el-input>
+                        </el-form-item>
+                    </el-form>
+                <!-- <ul>
+                
                     <li>
-                        <a href="#" @click="openExcel"><img src="~@/assets/open.png" alt="" id="openBtn" ></a>
-                        <el-input size="small">123</el-input>
-                    </li>
-                    <li>
-                        <!-- <el-switch
-                            size="small"
-                            v-model="value3"
-                            active-text=""
-                            inactive-text="withborder">
-                        </el-switch> -->
-                    </li>
-                    <li>
-                        <!-- <el-switch
-                            v-model="value2"
-                            active-text=""
-                            inactive-text="withborder">
-                        </el-switch> -->
+                      
                     </li>
                 </ul>
-                <el-button type="primary" size="small" @click="handleCopy">复制</el-button>
-                <!-- <i class="el-icon-edit"></i> -->
-
-                
+               
+                <!- <i class="el-icon-edit"></i> -->
+                <p> 
+                    <el-button size="small" @click="handleGenarate"> Generate </el-button>
+                    <el-button type="primary" size="small" @click="handleCopy">复制</el-button>
+                </p>
+                 
             </el-card>
         </div>
     </div>
 </template>
 
 <script>
-import {Card, Input, Button, Icon, Switch, Tabs} from 'element-ui';
+import {Card, Input, Button, Icon, Switch, Tabs, Form} from 'element-ui';
 import SubMenu from '@/components/SubMenu/SubMenu';
 import {remote, clipboard} from 'electron';
 import XLSX from 'xlsx';
@@ -49,7 +46,12 @@ export default {
     components: { SubMenu, editor },
     data () {
         return {
-            genCode: '123',
+
+            genCode: 'gen table code',
+            form: {
+                name: '',
+                filed: ''
+            },
             tableMenu: [
                 {
                     id: 1,
@@ -106,10 +108,17 @@ export default {
 
                 for (var item in data[0]) {
                     console.log("item", item + ':' + data[0][item]);
-                    this.valueArray.push(`{\n\ttitle: '${item}', \n\tdataIndex: ${data[0][item]}, \n\twidth: 120 \n},\t`)
+                    this.valueArray.push(`{\n\ttitle: '${item}', \n\tdataIndex: ${data[0][item]}, \n\twidth: 120 \n}, \n`)
                 }
                 this.genCode=this.valueArray.join('');
             })
+        },
+        handleGenarate () {
+            console.log('name',this.form.name)
+            console.log('field', this.form.field)
+            // const str = toInput(this.form.name,this.form.field)
+            console.log(str);
+            this.genCode = str;
         },
         handleCopy(){
             console.log('copied')
@@ -124,7 +133,7 @@ export default {
   
   #openBtn{
       position: absolute;
-      top: 30px;
+      top: 90px;
       right: 30px;
       z-index: 3000;
       width: 20px;

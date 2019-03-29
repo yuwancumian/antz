@@ -2,7 +2,6 @@
     <div>
         <textarea id="demotext" class="code-input">/* your code here */</textarea>
     </div>
-    
 </template>
 
 <script>

@@ -30,6 +30,10 @@ export default new Router({
       component: require('@/ui/FilterPage').default,
       children: [
         {
+          path: 'table',
+          component: require('@/ui/Filterpage/Table').default
+        },
+        {
           path: 'input',
           component: require('@/ui/Filterpage/Input').default
         },{

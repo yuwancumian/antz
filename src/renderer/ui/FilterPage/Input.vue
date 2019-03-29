@@ -43,15 +43,6 @@ export default {
             const str = toInput(this.form.name,this.form.field)
             console.log(str);
             this.genCode = str;
-            // var editor = ace.edit("editor", {
-            //     mode: "ace/mode/jsx",
-            //     selectionStyle: "line",
-            //     autoScrollEditorIntoView: true
-            // });
-            // // ace.config.set("basePath", "ace-builds/src-noconflict");
-            // editor.session.setTabSize(2);
-            // editor.setValue(str);
-            // console.log("finished")
         },
         hanldeCopy(){
             var editor = ace.edit("editor")
